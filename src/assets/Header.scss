@@ -1,0 +1,58 @@
+.header-container {
+    display: flex;
+    height: 35px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+
+    a {
+        font-size: small;
+        text-decoration: none;
+        color: #000;
+        border: 2px solid transparent;
+
+        &:hover {
+            color: #000;
+            border-bottom: #000 2px solid;
+        }
+    }
+
+    ul {
+        display: flex;
+        list-style: none;
+
+        li {
+            margin: 15px 10px 5px 10px;
+        }
+    }
+}
+
+.NavBarList {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    border-bottom: lightgray 1px solid;
+    margin-top: 15px;
+
+    a {
+        font-size: medium;
+        text-decoration: none;
+        color: #000;
+        border: 3px solid transparent;
+
+        &:hover {
+            color: #000;
+            border-bottom: #000 3px solid;
+        }
+    }
+
+    li {
+        margin: 5px 10px 5px 10px;
+    }
+}
+
+.headerHero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
