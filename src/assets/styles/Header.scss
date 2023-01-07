@@ -1,3 +1,65 @@
+header {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    background-image: url("/src/assets/image/heroImage.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    .navBarContainer {
+        background: linear-gradient(to bottom,#25211e 0,rgba(37,33,30,0) 100%);
+        color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        .navSelected {
+            border-bottom: #fff 3px solid;
+        }
+        .header-container {
+            a {
+                color: white;
+                &:hover {
+                    border-bottom: white 2px solid;
+                }
+            }
+        }
+        .NavBar_List  {
+            a {
+                color: white;
+            }
+        }
+    }
+    .navBarContainerActive {
+        background: white;
+        color: black;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        .navSelected {
+            border-bottom: #000 3px solid;
+        }
+        .header-container {
+            a {
+                color: black;
+            }
+        }
+        .NavBar_List  {
+            a {
+                color: black;
+            }
+        }
+    }
+}
+
+.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
 .header-container {
     display: flex;
     height: 35px;
@@ -8,11 +70,8 @@
     a {
         font-size: small;
         text-decoration: none;
-        color: #000;
         border: 2px solid transparent;
-
         &:hover {
-            color: #000;
             border-bottom: #000 2px solid;
         }
     }
@@ -39,24 +98,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     .NavBarList {
         display: flex;
         list-style: none;
         justify-content: center;
-        border-bottom: lightgray 1px solid;
         width: 100%;
         margin-top: 15px;
-
         a.NavBar_Link {
             font-size: medium;
-            color: #000;
             text-decoration: none;
             border: 3px solid transparent;
         }
+        
         li.NavBar_List {
             list-style: none;
-            padding: 5px 10px 2px 5px;
+            padding: 5px 10px 10px 5px;
         }
 
         .dropdown {
@@ -67,22 +123,22 @@
             display: block;
         }
 
-        .navSelected {
-            border-bottom: #000 3px solid;
-        }
-
         .NavBarDropdown {
             position: absolute;
             display: flex;
-            margin-top: 5px;
+            color: white;
+            padding-top: 12px;
             justify-content: space-around;
             left: 0;
-            background-color: lightgray;
+            background-color: rgba($color: #000000, $alpha: 0.7 );
             overflow: hidden;
-            height: 300px;
-            width: 100%;
+            height: 465px;
+            width: 98%;
+            margin-top: 1%;
+            margin-left: 1%;
             z-index: 1;
             transition: height 0.5s ease-in-out;
+
             // .NavBarDropdownItems {
             //     // display: flex;
             //     // justify-content: center;
@@ -91,24 +147,25 @@
             li {
                 margin-top: 10px;
                 list-style: none;
+
                 &:last-child {
                     margin-bottom: 20px;
                 }
             }
+
             a {
                 font-size: 15px;
-                color: #000;
                 text-decoration: none;
                 border: 1px solid transparent;
                 padding-left: 1px;
+                color: white;
                 &:hover {
-                    color: #000;
                     border-bottom: #000 1px solid;
                 }
-  
+
             }
         }
-        
+
     }
 
 }
