@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom'
 import { useState } from 'react'
 import NavBarTop from './NavBarTop'
 import NavBar from './NavBar'
-import '../assets/Header.scss'
+import '../assets/styles/Header.scss'
 
 const Header = () => {
 

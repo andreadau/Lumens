@@ -1,0 +1,114 @@
+.header-container {
+    display: flex;
+    height: 35px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+
+    a {
+        font-size: small;
+        text-decoration: none;
+        color: #000;
+        border: 2px solid transparent;
+
+        &:hover {
+            color: #000;
+            border-bottom: #000 2px solid;
+        }
+    }
+
+    ul {
+        display: flex;
+        list-style: none;
+
+        li {
+            margin: 15px 10px 5px 10px;
+        }
+    }
+}
+
+.headerHero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.NavBar {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .NavBarList {
+        display: flex;
+        list-style: none;
+        justify-content: center;
+        border-bottom: lightgray 1px solid;
+        width: 100%;
+        margin-top: 15px;
+
+        a.NavBar_Link {
+            font-size: medium;
+            color: #000;
+            text-decoration: none;
+            border: 3px solid transparent;
+        }
+        li.NavBar_List {
+            list-style: none;
+            padding: 5px 10px 2px 5px;
+        }
+
+        .dropdown {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .navSelected {
+            border-bottom: #000 3px solid;
+        }
+
+        .NavBarDropdown {
+            position: absolute;
+            display: flex;
+            margin-top: 5px;
+            justify-content: space-around;
+            left: 0;
+            background-color: lightgray;
+            overflow: hidden;
+            height: 300px;
+            width: 100%;
+            z-index: 1;
+            transition: height 0.5s ease-in-out;
+            // .NavBarDropdownItems {
+            //     // display: flex;
+            //     // justify-content: center;
+            //     // align-items: center;
+            // }
+            li {
+                margin-top: 10px;
+                list-style: none;
+                &:last-child {
+                    margin-bottom: 20px;
+                }
+            }
+            a {
+                font-size: 15px;
+                color: #000;
+                text-decoration: none;
+                border: 1px solid transparent;
+                padding-left: 1px;
+                &:hover {
+                    color: #000;
+                    border-bottom: #000 1px solid;
+                }
+  
+            }
+        }
+        
+    }
+
+}
