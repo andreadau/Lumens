@@ -2,7 +2,6 @@ import ReactDOM from 'react-dom'
 import { useState, useEffect } from 'react'
 import NavBarTop from './NavBarTop'
 import NavBar from './NavBar'
-import heroImg from '/src/assets/image/heroImage.jpg'
 import '../assets/styles/Header.scss'
 
 const Header = () => {

@@ -7,12 +7,18 @@ const MenuItems = ({ items }) => {
     const [selecedItem, setSelectedItem] = useState(false);
 
     const onMouseEnter = () => {
-        window.innerWidth > 960 && setDropdown(true);
+        if (window.innerWidth > 800) {
+            setDropdown(true);
+        }
+        console.log(dropdown)
         setSelectedItem(true);
     };
 
     const onMouseLeave = () => {
-        window.innerWidth > 960 && setDropdown(false);
+        if (window.innerWidth > 800) {
+            setDropdown(false);
+        }
+        console.log(dropdown)
         setSelectedItem(false);
     };
 

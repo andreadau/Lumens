@@ -23,7 +23,7 @@ const NavBar = () => {
             title: "Anelli", url: "/c/anelli",
             submenu: [
                 {
-                    title: 'Anelli',
+                    title: 'Mao',
                     url: '/c/nuovi-arrivi/anelli',
                 },
                 {
@@ -31,7 +31,7 @@ const NavBar = () => {
                     url: '/c/nuovi-arrivi/web-development',
                 },
                 {
-                    title: 'Bracciali',
+                    title: 'Napsda',
                     url: '/c/nuovi-arrivi/bracciali',
                 },
             ],
@@ -40,15 +40,15 @@ const NavBar = () => {
             title: "Collane", url: "/c/collane",
             submenu: [
                 {
-                    title: 'Anelli',
+                    title: 'Asndaid',
                     url: '/c/nuovi-arrivi/anelli',
                 },
                 {
-                    title: 'Ciau',
+                    title: 'Nuals',
                     url: '/c/nuovi-arrivi/web-development',
                 },
                 {
-                    title: 'Bracciali',
+                    title: 'Plasn',
                     url: '/c/nuovi-arrivi/bracciali',
                 },
             ],
@@ -57,15 +57,15 @@ const NavBar = () => {
             title: "Bracciali", url: "/c/bracciali",
             submenu: [
                 {
-                    title: 'Anelli',
+                    title: 'Xsnoa',
                     url: '/c/nuovi-arrivi/anelli',
                 },
                 {
-                    title: 'Miao',
+                    title: 'Erojsa',
                     url: '/c/nuovi-arrivi/web-development',
                 },
                 {
-                    title: 'Bracciali',
+                    title: 'Dnkas',
                     url: '/c/nuovi-arrivi/bracciali',
                 },
             ],
@@ -74,15 +74,15 @@ const NavBar = () => {
             title: "Orologi", url: "/c/orologi",
             submenu: [
                 {
-                    title: 'Anelli',
+                    title: 'Nspdan',
                     url: '/c/nuovi-arrivi/anelli',
                 },
                 {
-                    title: 'Bau',
+                    title: 'Unskda',
                     url: '/c/nuovi-arrivi/web-development',
                 },
                 {
-                    title: 'Bracciali',
+                    title: 'Enrkna',
                     url: '/c/nuovi-arrivi/bracciali',
                 },
             ],
