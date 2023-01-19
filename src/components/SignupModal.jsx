@@ -4,8 +4,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import '../assets/styles/LoginModal.scss'
 
-// write a singup modal component
-const SignupModal = ({ onClose }) => {
+const SignupModal = (props) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -48,11 +47,11 @@ const SignupModal = ({ onClose }) => {
 
   return (
     <div className="modal-wrapper">
-      <div className="modal-backdrop" onClick={onClose} />
+      <div className="modal-backdrop" onClick={() => props.onClose()} />
       <div className="modal-content">
         <form onSubmit={handleSubmit}>
           <h1 className="modal-title" >Sign up</h1>
-          <div id="modal-close" onClick={onClose}><FontAwesomeIcon icon={faTimes} />
+          <div id="modal-close" onClick={() => props.onClose()}><FontAwesomeIcon icon={faTimes} />
           </div>
           <label>
             <input
@@ -74,7 +73,7 @@ const SignupModal = ({ onClose }) => {
           </label>
           {error && <div className="error-message">{error}</div>}
           <button className="btn-black" type="submit">Sign Up</button>
-          <a href="/login">Already have an account? Login</a>
+          <a href="#" onClick={() => props.showLogin()}>Already have an account? Login</a>
         </form>
       </div>
     </div>
