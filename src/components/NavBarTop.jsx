@@ -1,55 +1,38 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons'
-import { useState, useEffect, useCallback } from 'react'
-import LoginModal from "./LoginModal";
-import SignupModal from "./SignupModal";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
+import { useState, useEffect, useCallback } from 'react';
+import AuthModal from './AuthModal'; // Import the new AuthModal
 import '../UI/styles/CommonClass.scss';
 
-const NavBar = (props) => {
-    // Modal of login and signup
-    const [showLoginModal, setShowLoginModal] = useState(false);
-    const [showSignupModal, setShowSignupModal] = useState(false);
-    // Component of login and signup
-    // Mobile
+const NavBar = () => {
+    // Modal state
+    const [showAuthModal, setShowAuthModal] = useState(false); // Open the modal by default
+    const [isLoginMode, setIsLoginMode] = useState(true); // Default to login mode
+
+    // Mobile detection
     const [isMobile, setIsMobile] = useState(false);
 
-    // Effect based on window size
+    // Effect for mobile detection
     useEffect(() => {
-        setIsMobile(window.innerWidth < 768);
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        handleResize(); // Initial check
         window.addEventListener("resize", handleResize);
         return () => {
             window.removeEventListener("resize", handleResize);
         };
     }, []);
 
-    const handleResize = () => {
-        setIsMobile(window.innerWidth < 768);
-    };
-
-    useEffect(() => {
-        if (showSignupModal) {
-            setShowLoginModal(false);
-        }
-    }, [showSignupModal]);
-
-    useEffect(() => {
-        if (showLoginModal) {
-            setShowSignupModal(false);
-        }
-    }, [showLoginModal]);
-
     const handleClose = useCallback(() => {
-        setShowLoginModal(false);
-        setShowSignupModal(false);
-    }, [setShowSignupModal]);
+        setShowAuthModal(false);
+    }, []);
 
     const handleShowLogin = useCallback(() => {
-        setShowLoginModal(true);
-    }, [setShowLoginModal]);
-
-    const handleShowSignup = useCallback(() => {
-        setShowSignupModal(true);
-    }, [setShowSignupModal]);
+        setIsLoginMode(true);
+        setShowAuthModal(true);
+    }, []);
 
     // Left items
     const leftItems = [
@@ -64,30 +47,43 @@ const NavBar = (props) => {
             <div className="header-container">
                 {!isMobile ? (
                     <ul className="navBarTop_Left">
-                        {leftItems.map((item, i) => {
-                            return (
-                                <a href="" key={i}><li className="navBarTop_Link">{item}</li></a>
-                            );
-                        })}
+                        {leftItems.map((item, i) => (
+                            <a href="#" key={i}>
+                                <li className="navBarTop_Link">{item}</li>
+                            </a>
+                        ))}
                     </ul>
                 ) : null}
                 <ul className="navBarTop_Right">
                     {!isMobile ? (
                         <>
-                            <a ><li className={`navBarTop_Link ${isMobile ? 'hidden' : null}`}>Ricerca</li></a>
-                            <a onClick={() => setShowLoginModal(true)}><li className={`navBarTop_Link ${isMobile ? 'hidden' : null}`}>Login</li></a>
+                            <a href="#"><li className="navBarTop_Link">Ricerca</li></a>
+                            <a onClick={handleShowLogin}><li className="navBarTop_Link">Login</li></a>
                         </>
-                    ) : null}
-                    <a onClick={() => setShowSignupModal(true)}><li className={`navBarTop_Link `}>{isMobile ? <FontAwesomeIcon icon={faUser} size="xl" /> : 'Registrati'}</li></a>
-                    <a href=""><li className="navBarTop_Link"><FontAwesomeIcon icon={faCartShopping} size={`${isMobile ? "xl" : "lg"}`} /></li></a>
+                    ) : (
+                        <a onClick={handleShowLogin}>
+                            <li className="navBarTop_Link">
+                                <FontAwesomeIcon icon={faUser} size="xl" />
+                            </li>
+                        </a>
+                    )}
+                    <a href="#">
+                        <li className="navBarTop_Link">
+                            <FontAwesomeIcon icon={faCartShopping} size={`${isMobile ? "xl" : "lg"}`} />
+                        </li>
+                    </a>
                 </ul>
             </div>
             <div>
-                {showLoginModal && <LoginModal onClose={handleClose} showSignup={handleShowSignup} />}
-                {showSignupModal && <SignupModal onClose={handleClose} showLogin={handleShowLogin} />}
+                {showAuthModal &&
+                    <AuthModal
+                        onClose={handleClose}
+                        userType="Member" 
+                    />
+                }
             </div>
         </>
-    )
+    );
 }
 
 export default NavBar;

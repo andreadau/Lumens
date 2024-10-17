@@ -22,6 +22,25 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    userType: {
+        type: String,
+        enum: ["Member", "Employee"],
+        required: true
+    },
+    permissions: {
+        userPermission: {
+            type: Boolean,
+            default: false
+        },
+        orderPermission: {
+            type: Boolean,
+            default: false
+        },
+        stockPermission: {
+            type: Boolean,
+            default: false
+        }
     }
 });
 
@@ -29,56 +48,57 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 app.post("/signup", async (req, res) => {
-    const email = req.body.email;
-    const password = req.body.password;
+    const { email, password, userType, permissions } = req.body;
 
-    // check if the user already exists
+    // Check if the user already exists
     const user = await User.findOne({ email });
     if (user) {
         return res.status(400).json({ error: "User already exists" });
     }
 
-    // hash the password
+    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // create a new user
+    // Create a new user
     const newUser = new User({
         email,
-        password: hashedPassword
+        password: hashedPassword,
+        userType,
+        permissions: userType === "Employee" ? permissions : undefined // Assign permissions if Employee
     });
 
-    // save the user to the database
+    // Save the user to the database
     await newUser.save();
 
-    // generate a JWT token
+    // Generate a JWT token
     const token = jwt.sign({ userId: newUser._id }, "secretkey");
 
-    // return the token to the client
+    // Return the token to the client
     res.status(201).json({ token });
 });
 
 app.post("/login", async (req, res) => {
-    const email = req.body.email;
-    const password = req.body.password;
+    const { email, password } = req.body;
 
-    // find the user by email
+    // Find the user by email
     const user = await User.findOne({ email });
     if (!user) {
         return res.status(401).json({ error: "Invalid credentials" });
     }
 
-    // check if the password is correct
+    // Check if the password is correct
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
         return res.status(401).json({ error: "Invalid credentials" });
     }
 
-    // generate a JWT token
+    // Generate a JWT token
     const token = jwt.sign({ userId: user._id }, "secretkey");
 
-    // return the token to the client
-    res.json({ token });
+    // Return the token, user type, and permissions to the client
+    res.json({ token, userType: user.userType, permissions: user.permissions });
 });
+
 
 mongoose
     .connect(
